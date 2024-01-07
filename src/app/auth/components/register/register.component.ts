@@ -24,16 +24,12 @@ export class RegisterComponent {
   isSubmiting$ = this.store.select(selectIsSubmitting);
   constructor(
     private fb: FormBuilder,
-    private store: Store<{auth: AuthStateInterface}>,
-    private authService: AuthService) { }
+    private store: Store) { }
   
   onSubmit(){
     console.log(this.form.getRawValue());
     const request : RegisterRequestInterface = this.form.getRawValue();
     this.store.dispatch(register({request}));
-    console.log(request);
-    this.authService.register(request).subscribe(res => 
-      console.log('res',res)
-    );
+   
   }
 }

@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { authFeatureKey, authReducer } from './auth/store/reducer';
+import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { authFeatureKey, authReducer } from './auth/store/reducer';
       traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
       connectInZone: true // If set to true, the connection is established within the Angular zone
     }),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     provideClientHydration()
