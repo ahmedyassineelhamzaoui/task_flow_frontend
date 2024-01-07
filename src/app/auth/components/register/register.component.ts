@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { register } from './store/action';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +11,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class RegisterComponent {
 
   
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,private store:Store) { }
   form= this.fb.nonNullable.group({
     firstName: ['',Validators.required,Validators.minLength(2)],
     lastName: ['',Validators.required,Validators.minLength(2)],
@@ -19,5 +21,6 @@ export class RegisterComponent {
   });
   onSubmit(){
     console.log(this.form.getRawValue());
+    this.store.dispatch(register());
   }
 }
