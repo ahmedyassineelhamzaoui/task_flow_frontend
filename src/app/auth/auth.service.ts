@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { RegisterRequestInterface } from './types/registerRequest.interface';
 import { Observable, map } from 'rxjs';
 import { CurrentUserInterface } from './shared/types/currentUser.interface';
-import { envirponment } from '../../environments/environment';
 import { AuthResponseInterface } from './types/authResponse.interface';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class AuthService {
   register(data: RegisterRequestInterface): Observable<CurrentUserInterface>{
     return this
             .http
-            .post<AuthResponseInterface>(envirponment.apiURL+'',data)
+            .post<AuthResponseInterface>(environment.apiURL+'',data)
             .pipe(map((response) => response.user));
   }
 }
