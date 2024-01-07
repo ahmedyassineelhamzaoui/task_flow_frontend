@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { register } from './store/action';
+import { RegisterRequestInterface } from './types/registerRequest.interface';
 
 @Component({
   selector: 'app-register',
@@ -21,6 +22,7 @@ export class RegisterComponent {
   });
   onSubmit(){
     console.log(this.form.getRawValue());
-    this.store.dispatch(register());
+    const request : RegisterRequestInterface = this.form.getRawValue();
+    this.store.dispatch(register({request}));
   }
 }
