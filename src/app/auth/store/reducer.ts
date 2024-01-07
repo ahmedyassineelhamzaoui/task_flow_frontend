@@ -1,5 +1,5 @@
 import { createFeature, createReducer, on } from "@ngrx/store";
-import { AuthStateInterface } from "../types/authState.interface";
+import { AuthStateInterface } from "./../types/authState.interface";
 import { register } from "./action";
 
 const initialState : AuthStateInterface = {

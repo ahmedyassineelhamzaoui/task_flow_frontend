@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { register } from './store/action';
-import { RegisterRequestInterface } from './types/registerRequest.interface';
-import { AuthStateInterface } from './types/authState.interface';
-import { selectIsSubmitting } from './store/reducer';
+import { RegisterRequestInterface } from '../../types/registerRequest.interface';
+import { AuthStateInterface } from '../../types/authState.interface';
+import { selectIsSubmitting } from '../../store/reducer';
+import { register } from '../../store/action';
 
 @Component({
   selector: 'app-register',

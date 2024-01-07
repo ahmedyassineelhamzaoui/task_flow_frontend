@@ -8,7 +8,7 @@ import { LoginComponent } from './auth/components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { authFeatureKey, authReducer } from './auth/components/register/store/reducer';
+import { authFeatureKey, authReducer } from './auth/store/reducer';
 
 
 @NgModule({
