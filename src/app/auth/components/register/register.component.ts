@@ -5,6 +5,7 @@ import { RegisterRequestInterface } from '../../types/registerRequest.interface'
 import { AuthStateInterface } from '../../types/authState.interface';
 import { selectIsSubmitting } from '../../store/reducer';
 import { register } from '../../store/action';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +24,8 @@ export class RegisterComponent {
   isSubmiting$ = this.store.select(selectIsSubmitting);
   constructor(
     private fb: FormBuilder,
-    private store: Store<{auth: AuthStateInterface}>) { }
+    private store: Store<{auth: AuthStateInterface}>,
+    private authService: AuthService) { }
   
   onSubmit(){
     console.log(this.form.getRawValue());
