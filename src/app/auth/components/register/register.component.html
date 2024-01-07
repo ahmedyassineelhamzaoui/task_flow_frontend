@@ -1,3 +1,5 @@
+=={{isSubmiting$ | async}}==
+
 <div id="register">
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
         <strong>Holy guacamole!</strong> You should check in on some of those fields below.
@@ -30,7 +32,7 @@
                     <input formControlName="confirmPassword" type="password" placeholder="********">
                 </li>
             </div>
-            <button type="submit">Sign Up</button>
+            <button type="submit" [disabled]="isSubmiting$|async">Sign Up</button>
 
             <p class="ms-1">already have an account <a routerLink="/login" class="ms-2 text-decoration-underline ">Sign
                     In</a></p>

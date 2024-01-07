@@ -12,4 +12,4 @@ const authFeature = createFeature({
         on(register, (state) => ({...state,isSubmitting: true}))
     ),
 })
-export const {name: authFeatureKey, reducer: authReducer} = authFeature;
+export const {name: authFeatureKey, reducer: authReducer,selectIsSubmitting} = authFeature;
