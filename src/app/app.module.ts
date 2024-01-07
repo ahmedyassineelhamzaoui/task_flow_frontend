@@ -8,6 +8,7 @@ import { LoginComponent } from './auth/components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { authFeatureKey, authReducer } from './auth/components/register/store/reducer';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     HttpClientModule,
     ReactiveFormsModule,
     StoreModule.forRoot({}, {}),
+    StoreModule.forFeature(authFeatureKey, authReducer),
     StoreDevtoolsModule.instrument({ 
       maxAge: 25, // Retains last 25 states
       logOnly: !isDevMode(), // Restrict extension to log-only mode
