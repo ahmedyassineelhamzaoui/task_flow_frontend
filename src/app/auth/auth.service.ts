@@ -16,7 +16,7 @@ export class AuthService {
   register(data: RegisterRequestInterface): Observable<CurrentUserInterface>{
     return this
             .http
-            .post<AuthResponseInterface>(environment.apiURL+'',data)
+            .post<AuthResponseInterface>(environment.apiUrlAuth+'signup',data)
             .pipe(map((response) => response.user));
   }
 }
