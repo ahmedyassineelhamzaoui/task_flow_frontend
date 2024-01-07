@@ -31,5 +31,9 @@ export class RegisterComponent {
     console.log(this.form.getRawValue());
     const request : RegisterRequestInterface = this.form.getRawValue();
     this.store.dispatch(register({request}));
+    console.log(request);
+    this.authService.register(request).subscribe(res => 
+      console.log('res',res)
+    );
   }
 }
