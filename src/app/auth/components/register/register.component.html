@@ -1,0 +1,41 @@
+<div id="register">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div id="FormContainer">
+        <div class="ImgContainer">
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" id="Form">
+            <h1 id="FormHeading">Sign Up</h1>
+            <div class="Name">
+                <li><label>First Name:</label>
+                    <input type="text" formControlName="firstName" placeholder="John">
+                </li>
+                <li><label>Last Name:</label>
+                    <input type="text" formControlName="lastName" placeholder="Doe">
+                </li>
+            </div>
+            <li>
+                <label>Email:</label>
+                <input type="email" formControlName="email" placeholder="example@gmail.com">
+            </li>
+            <div class="password">
+                <li>
+                    <label>Password:</label>
+                    <input formControlName="password" type="password" placeholder="********">
+                </li>
+                <li>
+                    <label>Confirm Password:</label>
+                    <input formControlName="confirmPassword" type="password" placeholder="********">
+                </li>
+            </div>
+            <button type="submit">Sign Up</button>
+
+            <p class="ms-1">already have an account <a routerLink="/login" class="ms-2 text-decoration-underline ">Sign
+                    In</a></p>
+
+        </form>
+
+    </div>
+</div>

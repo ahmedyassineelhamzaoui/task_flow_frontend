@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+#register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh ;
+}
+
+#FormContainer {
+    background-color: #ffffffa1;
+    backdrop-filter: blur(10px);
+    border: 2px solid #ffffff6d;
+    width: 760px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 11px 1.5px #0000002b;
+    font-family: Poppins;
+    padding: 10px;
+    height: 550px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+h1 {
+    padding: 20px;
+    color: var(--main-color);
+    font-size: 2.1rem;
+    font-weight: 800;
+    grid-column: 1/span 2;
+}
+
+.ImgContainer {
+    overflow: hidden;
+    border-radius: 10px;
+  background:url(https://wallpapercg.com/media/ts_sq/7898.webp);
+  background-size:100% 100%;
+}
+
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.Name,
+.password {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+
+}
+
+form li {
+    list-style-type: none;
+
+    display: flex;
+    flex-direction: column;
+    padding: 0px 5px;
+    text-align: left;
+
+}
+
+form label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    width: 100%;
+    padding: 5px 0;
+    color: var(--main-color);
+}
+
+form input,
+form select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #d9d8d8;
+    background-color: #ffffff6d;
+    width: 100%;
+    outline: none;
+    color: var(--main-color);
+    margin-bottom: 10px;
+}
+
+
+
+form .Phone {
+    display: grid;
+    grid-template-columns: 35% 65%;
+}
+
+form select {
+    width: 100%;
+}
+
+
+
+.Subscribe {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    align-items: center;
+}
+
+.CheckBoxCont {
+    width: 25px;
+    border-radius: 5px;
+    height: 25px;
+    position: relative;
+    border: 1px solid var(--main-color);
+    transition-duration: 0.2s;
+}
+
+.CheckBoxCont:hover {
+    background-color: var(--main-color);
+}
+
+.CheckBoxCont:hover .Tickline2 {
+    background-color: white;
+}
+
+.CheckBoxCont:hover .Tickline1 {
+    background-color: white;
+}
+
+
+.Tickline2,
+.Tickline1 {
+
+    background-color: var(--main-color);
+    border-radius: 20px;
+    height: 3px;
+    position: absolute;
+    width: 20px;
+    transition-duration: 0.3s;
+    border: none;
+    ;
+
+}
+
+.Tickline1 {
+    rotate: -45deg;
+    top: 10px;
+    left: 5px;
+    opacity: 0;
+    width: 18px;
+    animation: 1s car linear infinite;
+}
+
+.Tickline2 {
+    rotate: 50deg;
+    top: 12px;
+    width: 8px;
+    opacity: 0;
+    left: 2px;
+}
+
+.Subscribe label {
+    padding: 10px;
+    width: fit-content;
+
+}
+
+form button {
+    width: fit-content;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    color: #d9d8d8;
+    background-color: rgb(82, 11, 196);
+    border: none;
+    cursor: pointer;
+    margin: auto;
+}
+
+@media (max-width:800px) {
+    .ImgContainer {
+        display: none;
+    }
+
+    #FormContainer {
+        grid-template-columns: 100%;
+        width: 380px;
+    }
+
+
+}
+
+@media (max-width:430px) {
+    #FormContainer {
+        border-radius: 0px;
+        width: 100%;
+        padding: 5px;
+        height: 100%;
+    }
+
+    .Name,
+    .Phone,
+    .password {
+        display: block;
+    }
+}
