@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { RegisterRequestInterface } from '../../types/registerRequest.interface';
 import { AuthStateInterface } from '../../types/authState.interface';
 import { selectIsSubmitting } from '../../store/reducer';
-import { register } from '../../store/action';
+import { authActions } from '../../store/action';
 import { AuthService } from '../../auth.service';
 
 @Component({
@@ -29,7 +29,7 @@ export class RegisterComponent {
   onSubmit(){
     console.log(this.form.getRawValue());
     const request : RegisterRequestInterface = this.form.getRawValue();
-    this.store.dispatch(register({request}));
+    this.store.dispatch(authActions.register({request}));
    
   }
 }

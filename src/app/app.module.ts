@@ -10,6 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { authFeatureKey, authReducer } from './auth/store/reducer';
 import { EffectsModule } from '@ngrx/effects';
+import * as authEffects from './auth/store/effects';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { EffectsModule } from '@ngrx/effects';
       traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
       connectInZone: true // If set to true, the connection is established within the Angular zone
     }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([authEffects]),
   ],
   providers: [
     provideClientHydration()
