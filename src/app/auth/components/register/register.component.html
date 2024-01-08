@@ -1,8 +1,7 @@
-=={{isSubmiting$ | async}}==
-
+<ng-container *ngIf="data$ | async as data">
 <div id="register">
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+    <div *ngIf="data.backendErrors"  class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error</strong>       {{ getFirstError(data.backendErrors) }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <div id="FormContainer">
@@ -32,7 +31,7 @@
                     <input formControlName="confirmPassword" type="password" placeholder="********">
                 </li>
             </div>
-            <button type="submit" [disabled]="isSubmiting$|async">Sign Up</button>
+            <button type="submit" [disabled]="data.isSubmiting">Sign Up</button>
 
             <p class="ms-1">already have an account <a routerLink="/login" class="ms-2 text-decoration-underline ">Sign
                     In</a></p>
@@ -41,3 +40,4 @@
 
     </div>
 </div>
+</ng-container>
