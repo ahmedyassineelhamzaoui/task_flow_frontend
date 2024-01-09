@@ -22,10 +22,16 @@
             <div>
                 <label>Email:</label>
                 <input formControlName="email"  type="email" placeholder="example@gmail.com"> 
+                <strong class="text-danger" *ngIf="formLogin.get('email')?.invalid && formLogin.get('email')?.touched">
+                    Email must be a valid email address.
+                </strong>
             </div>
             <div >
                 <label>Password:</label>
                 <input formControlName="password" type="password" placeholder="********">
+                <strong class="text-danger" *ngIf="formLogin.get('password')?.invalid && formLogin.get('password')?.touched">
+                    Password is required.
+                </strong>
             </div>
 
             <button type="submit">Login In</button>
