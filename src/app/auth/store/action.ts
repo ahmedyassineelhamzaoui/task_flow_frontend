@@ -2,6 +2,7 @@ import { createAction, createActionGroup, emptyProps, props } from "@ngrx/store"
 import { RegisterRequestInterface } from "../types/registerRequest.interface";
 import { CurrentUserInterface } from "../shared/types/currentUser.interface";
 import { BackendErrorInterface } from "../shared/types/backendError.interface";
+import { LoginRequestInterface } from "../types/loginRequestInterface.interface";
 
 
 export const authActions = createActionGroup({
