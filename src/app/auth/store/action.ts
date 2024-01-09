@@ -14,6 +14,15 @@ export const authActions = createActionGroup({
     }
 })
 
+export const loginActions = createActionGroup({
+    source: 'login',
+    events :{
+        Login: props<{request: LoginRequestInterface}>(),
+        'Login Success': props<{currentUser: CurrentUserInterface}>(),
+        'Login Failure': props<{errors: BackendErrorInterface}>(),
+    }
+});
+
 
 // export const register = createAction(
 //     '[Auth] Register'
