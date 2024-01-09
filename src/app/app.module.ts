@@ -14,8 +14,9 @@ import { registerEffect, redirectAfterRegisterEffect, loginEffect, redirectAfter
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
-import { TaskComponent } from './dashboard-layout/component/task/task.component';
+import { TaskComponent } from './dashboard-layout/components/task/task.component';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
+import { AddTaskComponent } from './add-task/add-task.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.co
     NavbarComponent,
     SpinnerComponent,
     TaskComponent,
-    DashboardLayoutComponent
+    DashboardLayoutComponent,
+    AddTaskComponent
   ],
   imports: [
     BrowserModule,
