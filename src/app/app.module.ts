@@ -12,6 +12,9 @@ import { authFeatureKey, authReducer } from './auth/store/reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { registerEffect, redirectAfterRegisterEffect, loginEffect, redirectAfterLoginEffect } from './auth/store/effects';
 import { TasksComponent } from './dashboard/component/tasks/tasks.component';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import { TasksComponent } from './dashboard/component/tasks/tasks.component';
     RegisterComponent,
     LoginComponent,
     TasksComponent,
+    SidebarComponent,
+    NavbarComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
