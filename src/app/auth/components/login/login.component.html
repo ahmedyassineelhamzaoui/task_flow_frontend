@@ -6,7 +6,7 @@
     <div  id="FormContainer">
         <div class="ImgContainer">
         </div>
-        <form id="Form">
+        <form [formGroup]="formLogin" (ngSubmit)="signIn()"  id="Form">
             <h1 id="FormHeading">Sign In</h1>
             <div class="social-buttons">
                 <button><i class="fa-brands fa-google"></i> Use Google</button>
@@ -20,11 +20,11 @@
             </div>
             <div>
                 <label>Email:</label>
-                <input type="email" placeholder="example@gmail.com"> 
+                <input formControlName="email"  type="email" placeholder="example@gmail.com"> 
             </div>
             <div >
                 <label>Password:</label>
-                <input type="password" placeholder="********">
+                <input formControlName="password" type="password" placeholder="********">
             </div>
 
             <button type="submit">Login In</button>
