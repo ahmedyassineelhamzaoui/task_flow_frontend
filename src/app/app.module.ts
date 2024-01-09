@@ -11,20 +11,22 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { authFeatureKey, authReducer } from './auth/store/reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { registerEffect, redirectAfterRegisterEffect, loginEffect, redirectAfterLoginEffect } from './auth/store/effects';
-import { TasksComponent } from './dashboard/component/tasks/tasks.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { TaskComponent } from './dashboard-layout/component/task/task.component';
+import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    TasksComponent,
     SidebarComponent,
     NavbarComponent,
     SpinnerComponent,
+    TaskComponent,
+    DashboardLayoutComponent
   ],
   imports: [
     BrowserModule,
