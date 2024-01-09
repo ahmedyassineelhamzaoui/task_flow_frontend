@@ -1,3 +1,6 @@
+import { TagResponseInterface } from "./tag-response.interface";
+import { UserResponseInterface } from "./user-response.interface";
+
 export interface TaskResponseInterface {
       id: string;
       title: string;
@@ -5,7 +8,7 @@ export interface TaskResponseInterface {
       status: string;
       startDate: Date;
       endDate: Date;
-      tags: Tag[];
-      createdBy: User;
-      assignedTo: User;
+      tags: TagResponseInterface[];
+      createdBy: UserResponseInterface;
+      assignedTo: UserResponseInterface;
 }
