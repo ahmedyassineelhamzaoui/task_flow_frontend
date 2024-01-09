@@ -10,9 +10,8 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { authFeatureKey, authReducer } from './auth/store/reducer';
 import { EffectsModule } from '@ngrx/effects';
-import * as authEffects from './auth/store/effects';
+import { registerEffect, redirectAfterRegisterEffect, loginEffect, redirectAfterLoginEffect } from './auth/store/effects';
 import { TasksComponent } from './dashboard/component/tasks/tasks.component';
-
 
 @NgModule({
   declarations: [
@@ -29,14 +28,19 @@ import { TasksComponent } from './dashboard/component/tasks/tasks.component';
     StoreModule.forRoot({}, {}),
     StoreModule.forFeature(authFeatureKey, authReducer),
     StoreDevtoolsModule.instrument({ 
-      maxAge: 25, // Retains last 25 states
-      logOnly: !isDevMode(), // Restrict extension to log-only mode
-      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
-      trace: false, //  If set to true, will include stack trace for every dispatched action, so you can see it in trace tab jumping directly to that part of code
-      traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
-      connectInZone: true // If set to true, the connection is established within the Angular zone
+      maxAge: 25, 
+      logOnly: !isDevMode(), 
+      autoPause: true,
+      trace: false, 
+      traceLimit: 75, 
+      connectInZone: true 
     }),
-    EffectsModule.forRoot([authEffects]),
+    EffectsModule.forRoot({
+      registerEffect,
+      redirectAfterRegisterEffect,
+      loginEffect,
+      redirectAfterLoginEffect
+    }),
   ],
   providers: [
     provideClientHydration()

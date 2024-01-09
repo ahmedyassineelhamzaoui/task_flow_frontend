@@ -32,7 +32,6 @@ export const registerEffect = createEffect(
 
     { functional: true }
 );
-
 export const redirectAfterRegisterEffect = createEffect(
     (actions$ = inject(Actions), router= inject(Router)) => {
         return actions$.pipe(
@@ -44,7 +43,6 @@ export const redirectAfterRegisterEffect = createEffect(
     },
     {functional: true,dispatch: false}
 );
-
 export const loginEffect = createEffect(
     (actions$ = inject(Actions),
      authService = inject(AuthService),
@@ -69,4 +67,16 @@ export const loginEffect = createEffect(
 
     { functional: true }
 );
+export const redirectAfterLoginEffect = createEffect(
+     (actions$ = inject(Actions), router= inject(Router)) => {
+        return actions$.pipe(
+            ofType(loginActions.loginSuccess),
+            tap(() => {
+                router.navigateByUrl('/');
+            })
+        )
+     },
+    {functional: true,dispatch: false}
+);
+
 
