@@ -1,7 +1,7 @@
 import { inject } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { AuthService } from "../auth.service";
-import { authActions } from "./action";
+import { authActions, loginActions } from "./action";
 import { catchError, map, of, switchMap, tap } from "rxjs";
 import { CurrentUserInterface } from "../shared/types/currentUser.interface";
 import { HttpErrorResponse } from "@angular/common/http";
@@ -43,5 +43,30 @@ export const redirectAfterRegisterEffect = createEffect(
         )
     },
     {functional: true,dispatch: false}
+);
+
+export const loginEffect = createEffect(
+    (actions$ = inject(Actions),
+     authService = inject(AuthService),
+     persistanceService = inject(PersistanceService)
+    ) => {
+        return actions$.pipe(
+            ofType(loginActions.login),
+            switchMap(({ request }) => {
+                return authService.login(request).pipe(
+                    map((currentUser: CurrentUserInterface) => {
+                        persistanceService.set('accessToken', currentUser.accessToken);
+                        return loginActions.loginSuccess({ currentUser: currentUser }); 
+                    }),
+                    catchError((errorResponse: HttpErrorResponse) => {
+                        console.log('errorResponse',errorResponse.error.details);
+                        return of(loginActions.loginFailure({ errors: errorResponse.error.details }));
+                    })
+                );
+            })
+        );
+    },
+
+    { functional: true }
 );
 
