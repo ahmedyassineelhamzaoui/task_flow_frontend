@@ -11,6 +11,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { authFeatureKey, authReducer } from './auth/store/reducer';
 import { EffectsModule } from '@ngrx/effects';
 import * as authEffects from './auth/store/effects';
+import { TasksComponent } from './dashboard/component/tasks/tasks.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import * as authEffects from './auth/store/effects';
     AppComponent,
     RegisterComponent,
     LoginComponent,
+    TasksComponent,
   ],
   imports: [
     BrowserModule,
