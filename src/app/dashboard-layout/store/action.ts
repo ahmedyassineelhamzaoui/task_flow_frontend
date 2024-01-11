@@ -1,5 +1,4 @@
-import { Action, createAction, createActionGroup, props } from "@ngrx/store";
-import { BackendErrorInterface } from "../../auth/shared/types/backendError.interface";
+import { Action } from "@ngrx/store";
 import { TaskResponseInterface } from "../types/task-response.interface";
 
 export class GetAllTasksAction implements Action {

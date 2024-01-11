@@ -17,6 +17,8 @@ import { SpinnerComponent } from './shared/components/spinner/spinner.component'
 import { TaskComponent } from './dashboard-layout/components/task/task.component';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
 import { AddTaskComponent } from './dashboard-layout/components/add-task/add-task.component';
+import { TasksEffects } from './dashboard-layout/store/effects';
+import { tasksReducer } from './dashboard-layout/store/reducer';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,7 @@ import { AddTaskComponent } from './dashboard-layout/components/add-task/add-tas
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({taskState:tasksReducer}, {}),
     StoreModule.forFeature(authFeatureKey, authReducer),
     StoreDevtoolsModule.instrument({ 
       maxAge: 25, 
@@ -49,8 +51,10 @@ import { AddTaskComponent } from './dashboard-layout/components/add-task/add-tas
       registerEffect,
       redirectAfterRegisterEffect,
       loginEffect,
-      redirectAfterLoginEffect
-    }),
+      redirectAfterLoginEffect,
+    },
+     TasksEffects
+    ),
   ],
   providers: [
     provideClientHydration()

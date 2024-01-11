@@ -1,20 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { loadTasks } from '../../store/action';
+import { Observable, map } from 'rxjs';
+import { TaskStateInterface } from '../../store/reducer';
+import { GetAllTasksAction } from '../../store/action';
+
 
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
   styleUrl: './task.component.css'
 })
-export class TaskComponent implements OnInit{
+export class TaskComponent implements OnInit {
 
-  constructor(private store: Store) {}
+  taskState$: Observable<TaskStateInterface>;
+
+  constructor(private store: Store<{ taskState: TaskStateInterface }>) {
+    this.taskState$ = this.store.select('taskState');
+  }
   
-  ngOnInit() {
-    console.log("call get all tasks")
-
-       this.store.dispatch(loadTasks());
-      console.log("call get all tasks")
+  ngOnInit(): void {
+    console.log("yes1")
+    this.store.dispatch(new GetAllTasksAction({}));
+    console.log("yes2")
   }
 }

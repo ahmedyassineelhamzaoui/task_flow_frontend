@@ -1,3 +1,4 @@
+import { Action } from "@ngrx/store";
 import { TaskResponseInterface } from "../types/task-response.interface";
 import { TasksActions } from "./action";
 
@@ -18,7 +19,7 @@ const initialState: TaskStateInterface = {
     errorMessage: '',
     dataSate: TaskStateEnum.INTILALE
 }
-export function tasksReducer(state: TaskStateInterface = initialState, action: TasksActions){
+export function tasksReducer(state: TaskStateInterface = initialState, action: Action){
     switch(action.type){
         case '[Task] Get All Tasks':
             return {
@@ -28,13 +29,13 @@ export function tasksReducer(state: TaskStateInterface = initialState, action: T
         case '[Task] Get All Tasks success':
             return {
                 ...state,
-                tasks: action.payload,
+                tasks: (<TasksActions>action).payload,
                 dataSate: TaskStateEnum.LOADED
             }
         case '[Task] Get All Tasks failure':
             return {
                 ...state,
-                errorMessage: action.payload,
+                errorMessage: (<TasksActions>action).payload,
                 dataSate: TaskStateEnum.ERROR
             }
         default:

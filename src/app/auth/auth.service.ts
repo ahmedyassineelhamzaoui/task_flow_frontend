@@ -3,16 +3,17 @@ import { Injectable } from '@angular/core';
 import { RegisterRequestInterface } from './types/registerRequest.interface';
 import { Observable, map } from 'rxjs';
 import { CurrentUserInterface } from './shared/types/currentUser.interface';
-import { AuthResponseInterface } from './types/authResponse.interface';
 import { environment } from '../../environments/environment.development';
 import { LoginRequestInterface } from './types/loginRequestInterface.interface';
 import { PersistanceService } from './shared/services/persistance.service';
-
+import * as jwt from 'jsonwebtoken';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  
+
+   token = this.persistanceService.get('accessToken');
+   private readonly validationUrl = environment.apiUrlAuth + 'validate-token';
 
   constructor(private http:HttpClient, private persistanceService: PersistanceService) { }
 
@@ -27,9 +28,8 @@ export class AuthService {
             .post<CurrentUserInterface>(environment.apiUrlAuth+'signin',data);
   }
 
-  isTokenValid(): boolean {
-    const token = this.persistanceService.get('accessToken');
-    return !!token;
+  isTokenValid(): Observable<boolean> {
+    return this.http.post<boolean>(this.validationUrl, { token: this.token });
   }
 
 }
