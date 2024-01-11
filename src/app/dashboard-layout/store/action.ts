@@ -1,16 +1,17 @@
-import { createAction, createActionGroup, props } from "@ngrx/store";
+import { Action, createAction, createActionGroup, props } from "@ngrx/store";
 import { BackendErrorInterface } from "../../auth/shared/types/backendError.interface";
 import { TaskResponseInterface } from "../types/task-response.interface";
 
-
-export const loadTasks = createAction('[Tasks] load tasks');
-
-export const loadTasksSuccess = createAction(
-    '[Task] load Tasks success',
-    props<{tasks:TaskResponseInterface[]}>()
-);
-
-export const loadTasksFailure = createAction(
-    '[Task] load Tasks failure',
-    props<{error : BackendErrorInterface}>()
-);
+export class GetAllTasksAction implements Action {
+   type = '[Task] Get All Tasks';
+   constructor(public payload: any) { }
+}
+export class GetAllTasksSuccessAction implements Action {
+    type = '[Task] Get All Tasks success';
+    constructor(public payload: any) { }
+}
+export class GetAllTasksFailureAction implements Action {
+    type = '[Task] Get All Tasks failure';
+    constructor(public payload: any) { }
+}
+export type TasksActions = GetAllTasksAction | GetAllTasksSuccessAction | GetAllTasksFailureAction;

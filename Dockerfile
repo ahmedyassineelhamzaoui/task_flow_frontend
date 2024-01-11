@@ -1,6 +1,6 @@
 #first stage of buoiding the image
 FROM node:20.10-alpine3.18 as build
-run mkdir -p /app
+RUN mkdir -p /app
 
 WORKDIR /app
 
