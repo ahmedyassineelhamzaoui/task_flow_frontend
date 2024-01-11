@@ -8,10 +8,10 @@ export class GetAllTasksAction implements Action {
 }
 export class GetAllTasksSuccessAction implements Action {
     type = '[Task] Get All Tasks success';
-    constructor(public payload: any) { }
+    constructor(public payload: TaskResponseInterface[]) { }
 }
 export class GetAllTasksFailureAction implements Action {
     type = '[Task] Get All Tasks failure';
-    constructor(public payload: any) { }
+    constructor(public payload: string) { }
 }
 export type TasksActions = GetAllTasksAction | GetAllTasksSuccessAction | GetAllTasksFailureAction;

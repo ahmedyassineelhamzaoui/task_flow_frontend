@@ -1,11 +1,43 @@
-import { createReducer, on } from "@ngrx/store";
-import { loadTasksFailure, loadTasksSuccess } from "./action";
 import { TaskResponseInterface } from "../types/task-response.interface";
+import { TasksActions } from "./action";
 
-export const initialState: ReadonlyArray<TaskResponseInterface> = [];
+export enum TaskStateEnum{
+    LOADING = 'Loading',
+    LOADED = 'Success',
+    ERROR = 'Error',
+    INTILALE = 'Initial'
+}
+export interface TaskStateInterface {
+    tasks: TaskResponseInterface[] ,
+    errorMessage : string,
+    dataSate: TaskStateEnum
+}
 
-export const taskReducer = createReducer(
-    initialState,     
-    on(loadTasksSuccess,(state,{tasks}) => tasks),
-    on(loadTasksFailure,state=> state)
-);
+const initialState: TaskStateInterface = {
+    tasks: [],
+    errorMessage: '',
+    dataSate: TaskStateEnum.INTILALE
+}
+export function tasksReducer(state: TaskStateInterface = initialState, action: TasksActions){
+    switch(action.type){
+        case '[Task] Get All Tasks':
+            return {
+                ...state,
+                dataSate: TaskStateEnum.LOADING
+            }
+        case '[Task] Get All Tasks success':
+            return {
+                ...state,
+                tasks: action.payload,
+                dataSate: TaskStateEnum.LOADED
+            }
+        case '[Task] Get All Tasks failure':
+            return {
+                ...state,
+                errorMessage: action.payload,
+                dataSate: TaskStateEnum.ERROR
+            }
+        default:
+            return {...state}
+    }
+}
