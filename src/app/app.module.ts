@@ -16,7 +16,7 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { TaskComponent } from './dashboard-layout/components/task/task.component';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
-import { AddTaskComponent } from './add-task/add-task.component';
+import { AddTaskComponent } from './dashboard-layout/components/add-task/add-task.component';
 
 @NgModule({
   declarations: [

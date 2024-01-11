@@ -12,6 +12,7 @@ export class TaskService {
   constructor(private http: HttpClient) {}
 
   getAllTasks(): Observable<TaskResponseInterface[]> {
+    console.log("service")
     return this.http.get<TaskResponseInterface[]>(environment.apiURL + '/tasks');
   }
   
