@@ -13,6 +13,7 @@ import * as jwt from 'jsonwebtoken';
 export class AuthService {
 
    token = this.persistanceService.get('accessToken');
+   
    private readonly validationUrl = environment.apiUrlAuth + 'validate-token';
 
   constructor(private http:HttpClient, private persistanceService: PersistanceService) { }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
-import { TaskStateInterface } from '../../store/reducer';
+import { TaskStateEnum, TaskStateInterface } from '../../store/reducer';
 import { GetAllTasksAction } from '../../store/action';
 
 
@@ -13,14 +13,12 @@ import { GetAllTasksAction } from '../../store/action';
 export class TaskComponent implements OnInit {
 
   taskState$: Observable<TaskStateInterface>;
-
-  constructor(private store: Store<{ taskState: TaskStateInterface }>) {
-    this.taskState$ = this.store.select('taskState');
+  readonly taskStateEnum = TaskStateEnum;
+  constructor(private store: Store<any>) {
+    this.taskState$ = this.store.select('mytaskState');
   }
   
   ngOnInit(): void {
-    console.log("yes1")
-    this.store.dispatch(new GetAllTasksAction({}));
-    console.log("yes2")
+    this.store.dispatch(new GetAllTasksAction({})); 
   }
 }

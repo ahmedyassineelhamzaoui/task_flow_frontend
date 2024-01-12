@@ -4,7 +4,7 @@ import { TasksActions } from "./action";
 
 export enum TaskStateEnum{
     LOADING = 'Loading',
-    LOADED = 'Success',
+    SUCCESS = 'Success',
     ERROR = 'Error',
     INTILALE = 'Initial'
 }
@@ -30,7 +30,7 @@ export function tasksReducer(state: TaskStateInterface = initialState, action: A
             return {
                 ...state,
                 tasks: (<TasksActions>action).payload,
-                dataSate: TaskStateEnum.LOADED
+                dataSate: TaskStateEnum.SUCCESS
             }
         case '[Task] Get All Tasks failure':
             return {

@@ -14,12 +14,14 @@ export class TasksEffects{
     getAllTasksEffect=createEffect(()=>this.actions$.pipe(
         ofType('[Task] Get All Tasks'),
         mergeMap((action)=>this.taskService.getAllTasks().pipe(
-            map((tasks)=>{
-                return {type:'[Task] Get All Tasks success',payload:tasks}
+            map((response)=>{
+                console.table(response.details.tasks);
+                return {type:'[Task] Get All Tasks success',payload:response.details.tasks}
             }),
             catchError((error)=>{
                 return of({type:'[Task] Get All Tasks failure',payload:error})
             })
+            
         ))
     ))
    

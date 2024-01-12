@@ -1,5 +1,6 @@
 import { Action } from "@ngrx/store";
 import { TaskResponseInterface } from "../types/task-response.interface";
+import { TaskStateInterface } from "./reducer";
 
 export class GetAllTasksAction implements Action {
    type = '[Task] Get All Tasks';
@@ -7,7 +8,7 @@ export class GetAllTasksAction implements Action {
 }
 export class GetAllTasksSuccessAction implements Action {
     type = '[Task] Get All Tasks success';
-    constructor(public payload: TaskResponseInterface[]) { }
+    constructor(public payload: TaskStateInterface[]) { }
 }
 export class GetAllTasksFailureAction implements Action {
     type = '[Task] Get All Tasks failure';

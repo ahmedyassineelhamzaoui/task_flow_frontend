@@ -1,1 +1,85 @@
-<p>task wks!</p>
+<ng-container *ngIf="taskState$ | async as state" [ngSwitch]="state.dataSate">
+    <ng-container *ngSwitchCase="taskStateEnum.INTILALE">
+        <div>initial state</div>
+    </ng-container>
+    <ng-container *ngSwitchCase="taskStateEnum.LOADING">
+        <div>loading state</div>
+    </ng-container>
+    <ng-container *ngSwitchCase="taskStateEnum.SUCCESS">
+        <div class="flex items-center justify-between font-bold">
+            <h4>Tasks</h4>
+            <button type="button" class="flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+              <p class="mr-1">Add Task</p>
+              
+            </button>
+        </div>
+        <div class="relative overflow-x-auto">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            title
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Description
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            status
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            startDate
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            endDate
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            tags
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            created By
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            assigned To
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let task of state.tasks"
+                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{task.title}}
+                        </th>
+                        <td class="px-6 py-4">
+                            {{task.description}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{task.status}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{task.startDate}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{task.endDate}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{task.tags}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ task.createdBy.firstName }}
+                        </td>
+                        <td class="px-6 py-4">
+                            <span>{{task.assignedTo ? task.assignedTo.firstName : 'No assigned yet'}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </ng-container>
+    <ng-container *ngSwitchCase="taskStateEnum.ERROR">
+        <div>error state</div>
+    </ng-container>
+</ng-container>

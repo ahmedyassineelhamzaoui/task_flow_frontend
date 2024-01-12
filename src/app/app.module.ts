@@ -37,7 +37,7 @@ import { tasksReducer } from './dashboard-layout/store/reducer';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({taskState:tasksReducer}, {}),
+    StoreModule.forRoot({mytaskState:tasksReducer}, {}),
     StoreModule.forFeature(authFeatureKey, authReducer),
     StoreDevtoolsModule.instrument({ 
       maxAge: 25, 
