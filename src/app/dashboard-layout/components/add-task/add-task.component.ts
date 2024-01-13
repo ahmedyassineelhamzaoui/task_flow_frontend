@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-task',
@@ -8,6 +8,11 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class AddTaskComponent {
 
+  constructor(private dialogRef: MatDialogRef<AddTaskComponent>) { }
 
-  
+  closeAddTaskDialog() {
+    this.dialogRef.close();
+  }
+
+
 }
