@@ -1,0 +1,23 @@
+#save-task-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#save-task-form{
+    padding: 1em 1em;
+    width: 70%;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+.scrollable-table {
+    overflow-x: auto;
+    max-height: 70vh;
+    overflow-y: auto;
+}
