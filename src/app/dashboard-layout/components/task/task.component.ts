@@ -14,11 +14,16 @@ export class TaskComponent implements OnInit {
 
   taskState$: Observable<TaskStateInterface>;
   readonly taskStateEnum = TaskStateEnum;
+  dropdownOpen: { [index: number]: boolean } = {};
   constructor(private store: Store<any>) {
     this.taskState$ = this.store.select('mytaskState');
   }
   
   ngOnInit(): void {
+    this.getAllTasks();
+  }
+
+  getAllTasks() {
     this.store.dispatch(new GetAllTasksAction({})); 
   }
 }
