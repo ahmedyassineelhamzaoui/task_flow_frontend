@@ -30,4 +30,5 @@ export class SearchTasksFailureAction implements Action {
     constructor(public payload: string) { }
 }
 
-export type TasksActions = GetAllTasksAction | GetAllTasksSuccessAction | GetAllTasksFailureAction;
+export type TasksActions = GetAllTasksAction | GetAllTasksSuccessAction | GetAllTasksFailureAction|
+                           SearchTasksAction | SearchTasksSuccessAction | SearchTasksFailureAction;
