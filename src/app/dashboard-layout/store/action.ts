@@ -19,7 +19,7 @@ export class GetAllTasksFailureAction implements Action {
 // search actions
 export class SearchTasksAction implements Action {
     type = '[Task] Search Tasks';
-    constructor(public payload: any) { }
+    constructor(public payload: string) { }
 }
 export class SearchTasksSuccessAction implements Action {
     type = '[Task] Search Tasks success';

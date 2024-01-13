@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
 import { TaskStateEnum, TaskStateInterface } from '../../store/reducer';
@@ -14,11 +14,13 @@ import { AddTaskComponent } from '../add-task/add-task.component';
 })
 export class TaskComponent implements OnInit {
 
+  searchTerm!:string;
   taskState$: Observable<TaskStateInterface>;
   readonly taskStateEnum = TaskStateEnum;
   dropdownOpen: { [index: number]: boolean } = {};
   constructor(private store: Store<any>,
-    private addTaskDialog: MatDialog) {
+    private addTaskDialog: MatDialog,
+    private cd: ChangeDetectorRef) {
     this.taskState$ = this.store.select('mytaskState');
   }
 
@@ -36,7 +38,8 @@ export class TaskComponent implements OnInit {
     //   this.getAllCompetitions();
     // });
   }
-  searchTasks(dataForm: any) {
-    this.store.dispatch(new SearchTasksAction(dataForm.search));
+  searchTasks(searchTerm: string) {
+    this.store.dispatch(new SearchTasksAction(searchTerm));
+
   }
 }

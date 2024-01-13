@@ -30,8 +30,6 @@ export class AuthService {
   }
 
   isTokenValid(): Observable<boolean> {
-    console.log("isTokenValid");
-    console.log(this.token);
     return this.http.post<boolean>(this.validationUrl, { token: this.token });
   }
   setToken(token: string): void {

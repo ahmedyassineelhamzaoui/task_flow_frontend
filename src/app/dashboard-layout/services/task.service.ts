@@ -15,17 +15,15 @@ export class TaskService {
     private persistanceService: PersistanceService) {}
 
     getAllTasks(): Observable<ResponseWithDetailsInterface> {
-      const token = this.persistanceService.get('accessToken');
-      
-      console.log(token);
+      const token = this.persistanceService.get('accessToken');      
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
       return this.http.get<any>(environment.apiURL + 'tasks', { headers });
     }
+
     searchTasks(search: string): Observable<ResponseWithDetailsInterface> {
       const token = this.persistanceService.get('accessToken');
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-      return this.http.get<ResponseWithDetailsInterface>(environment.apiURL + 'tasks?searchName' + search, { headers });
+      return this.http.get<any>(environment.apiURL + 'searchedTasks?searchName=' + search, { headers });
     }
   
 }

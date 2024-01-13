@@ -18,7 +18,6 @@ export class TasksEffects{
         ofType('[Task] Get All Tasks'),
         mergeMap((action)=>this.taskService.getAllTasks().pipe(
             map((response)=>{
-                console.table(response.details.tasks);
                 return {type:'[Task] Get All Tasks success',payload:response.details.tasks}
             }),
             catchError((error)=>{
@@ -32,6 +31,7 @@ export class TasksEffects{
         ofType('[Task] Search Tasks'),
         mergeMap((action:TasksActions)=>this.taskService.searchTasks(action.payload).pipe(
             map((response)=>{
+                console.table(response.details.tasks);
                 return {type:'[Task] Search Tasks success',payload:response.details.tasks}
             }),
             catchError((error)=>{
