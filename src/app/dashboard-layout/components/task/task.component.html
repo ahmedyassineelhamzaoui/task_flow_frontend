@@ -34,13 +34,13 @@
                         placeholder="Search By title,description">
                 </div>
             </form>
-            <select id="status"
+            <select id="status" (change)="filterTasks($event.target.value)"
                 class="font-bold border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option selected>Filter By Status</option>
-                <option value="US">Todo</option>
-                <option value="CA">In Progress</option>
-                <option value="FR">Completed</option>
-                <option value="DE">Not Done</option>
+                <option value="TODO">Todo</option>
+                <option value="IN_PROGRESS">In Progress</option>
+                <option value="COMPLETED">Completed</option>
+                <option value="NOT_DONE">Not Done</option>
             </select>
 
         </div>
