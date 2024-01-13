@@ -45,4 +45,5 @@ export class FilterTasksFailureAction implements Action {
 }
 
 export type TasksActions = GetAllTasksAction | GetAllTasksSuccessAction | GetAllTasksFailureAction|
-                           SearchTasksAction | SearchTasksSuccessAction | SearchTasksFailureAction;
+                           SearchTasksAction | SearchTasksSuccessAction | SearchTasksFailureAction|
+                           FilterTasksAction | FilterTasksSuccessAction | FilterTasksFailureAction;
