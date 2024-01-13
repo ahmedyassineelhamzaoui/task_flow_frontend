@@ -57,6 +57,24 @@ export function tasksReducer(state: TaskStateInterface = initialState, action: A
                 errorMessage: (<TasksActions>action).payload,
                 dataSate: TaskStateEnum.ERROR
             }
+        // filter tasks
+        case '[Task] Filter Tasks':
+            return {
+                ...state,
+                dataSate: TaskStateEnum.LOADING
+            }
+        case '[Task] Filter Tasks success':
+            return {
+                ...state,
+                tasks: (<TasksActions>action).payload,
+                dataSate: TaskStateEnum.SUCCESS
+            }
+        case '[Task] Filter Tasks failure':
+            return {
+                ...state,
+                errorMessage: (<TasksActions>action).payload,
+                dataSate: TaskStateEnum.ERROR
+            }
         default:
             return {...state}
     }
