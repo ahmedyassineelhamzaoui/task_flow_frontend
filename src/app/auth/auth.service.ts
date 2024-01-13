@@ -12,11 +12,11 @@ import * as jwt from 'jsonwebtoken';
 })
 export class AuthService {
 
-   token = this.persistanceService.get('accessToken');
    
    private readonly validationUrl = environment.apiUrlAuth + 'validate-token';
 
   constructor(private http:HttpClient, private persistanceService: PersistanceService) { }
+  token = this.persistanceService.get('accessToken');
 
   register(data: RegisterRequestInterface): Observable<CurrentUserInterface>{
     return this
@@ -30,7 +30,11 @@ export class AuthService {
   }
 
   isTokenValid(): Observable<boolean> {
+    console.log("isTokenValid");
+    console.log(this.token);
     return this.http.post<boolean>(this.validationUrl, { token: this.token });
   }
-
+  setToken(token: string): void {
+    this.token = token;
+  }
 }

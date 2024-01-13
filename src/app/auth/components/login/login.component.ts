@@ -26,7 +26,6 @@ export class LoginComponent {
     });
 
   signIn() {
-    console.log('signIn method called');
     this.markFormControlsAsTouched(this.formLogin);
     console.log(this.formLogin.getRawValue());
     if (this.formLogin.valid) {

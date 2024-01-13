@@ -54,6 +54,7 @@ export const loginEffect = createEffect(
                 return authService.login(request).pipe(
                     map((currentUser: CurrentUserInterface) => {
                         persistanceService.set('accessToken', currentUser.accessToken);
+                        authService.setToken(currentUser.accessToken); 
                         return loginActions.loginSuccess({ currentUser: currentUser }); 
                     }),
                     catchError((errorResponse: HttpErrorResponse) => {
@@ -68,11 +69,14 @@ export const loginEffect = createEffect(
     { functional: true }
 );
 export const redirectAfterLoginEffect = createEffect(
-     (actions$ = inject(Actions), router= inject(Router)) => {
+     (actions$ = inject(Actions),     persistanceService = inject(PersistanceService)
+     , router= inject(Router)) => {
         return actions$.pipe(
             ofType(loginActions.loginSuccess),
             tap(() => {
-                router.navigateByUrl('/');
+                console.log('redirectAfterLoginEffect');
+                console.log('token',persistanceService.get('accessToken'));
+                router.navigateByUrl('/tasks');
             })
         )
      },
