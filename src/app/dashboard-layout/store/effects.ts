@@ -3,6 +3,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { TaskService } from '../services/task.service';
+import { TaskStateInterface } from './reducer';
+import { TasksActions } from './action';
 
 @Injectable()
 export class TasksEffects{
@@ -28,7 +30,7 @@ export class TasksEffects{
     // search tasks effect
     searchTasksEffect=createEffect(()=>this.actions$.pipe(
         ofType('[Task] Search Tasks'),
-        mergeMap((action)=>this.taskService.searchTasks(action).pipe(
+        mergeMap((action:TasksActions)=>this.taskService.searchTasks(action.payload).pipe(
             map((response)=>{
                 return {type:'[Task] Search Tasks success',payload:response.details.tasks}
             }),
