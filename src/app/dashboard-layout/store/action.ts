@@ -29,6 +29,20 @@ export class SearchTasksFailureAction implements Action {
     type = '[Task] Search Tasks failure';
     constructor(public payload: string) { }
 }
+// filter task by status
+
+export class FilterTasksAction implements Action {
+    type = '[Task] Filter Tasks';
+    constructor(public payload: any) { }
+}
+export class FilterTasksSuccessAction implements Action {
+    type = '[Task] Filter Tasks success';
+    constructor(public payload: TaskStateInterface[]) { }
+}
+export class FilterTasksFailureAction implements Action {
+    type = '[Task] Filter Tasks failure';
+    constructor(public payload: string) { }
+}
 
 export type TasksActions = GetAllTasksAction | GetAllTasksSuccessAction | GetAllTasksFailureAction|
                            SearchTasksAction | SearchTasksSuccessAction | SearchTasksFailureAction;

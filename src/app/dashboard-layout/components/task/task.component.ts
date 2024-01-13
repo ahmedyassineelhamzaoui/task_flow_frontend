@@ -42,4 +42,8 @@ export class TaskComponent implements OnInit {
     this.store.dispatch(new SearchTasksAction(searchTerm));
 
   }
+  filterTasks(e: Event) {
+    const target = e.target as HTMLSelectElement; 
+    console.log('Filtering tasks with status:', target.value);
+  }
 }
