@@ -31,7 +31,6 @@ export class TasksEffects{
         ofType('[Task] Search Tasks'),
         mergeMap((action:TasksActions)=>this.taskService.searchTasks(action.payload).pipe(
             map((response)=>{
-                console.table(response.details.tasks);
                 return {type:'[Task] Search Tasks success',payload:response.details.tasks}
             }),
             catchError((error)=>{
@@ -41,5 +40,19 @@ export class TasksEffects{
         ))
     ))
 
+    // filter tasks effect
+    filterTasksEffect=createEffect(()=>this.actions$.pipe(
+        ofType('[Task] Filter Tasks'),
+        mergeMap((action:TasksActions)=>this.taskService.filterTasks(action.payload).pipe(
+            map((response)=>{
+                console.table(response.details.tasks);
+                return {type:'[Task] Filter Tasks success',payload:response.details.tasks}
+            }),
+            catchError((error)=>{
+                return of({type:'[Task] Filter Tasks failure',payload:error})
+            })
+            
+        ))
+    ))
    
 }
