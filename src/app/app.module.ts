@@ -19,6 +19,7 @@ import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.co
 import { AddTaskComponent } from './dashboard-layout/components/add-task/add-task.component';
 import { TasksEffects } from './dashboard-layout/store/effects';
 import { tasksReducer } from './dashboard-layout/store/reducer';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { tasksReducer } from './dashboard-layout/store/reducer';
     },
      TasksEffects
     ),
+    BrowserAnimationsModule,
   ],
   providers: [
     provideClientHydration()
