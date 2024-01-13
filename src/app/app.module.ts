@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './auth/components/register/register.component';
 import { LoginComponent } from './auth/components/login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { authFeatureKey, authReducer } from './auth/store/reducer';
@@ -37,6 +37,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot({mytaskState:tasksReducer}, {}),
     StoreModule.forFeature(authFeatureKey, authReducer),
