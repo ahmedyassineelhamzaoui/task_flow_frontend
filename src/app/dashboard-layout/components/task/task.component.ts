@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
 import { TaskStateEnum, TaskStateInterface } from '../../store/reducer';
-import { GetAllTasksAction } from '../../store/action';
+import { GetAllTasksAction, SearchTasksAction } from '../../store/action';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTaskComponent } from '../add-task/add-task.component';
 
@@ -35,5 +35,8 @@ export class TaskComponent implements OnInit {
     //   this.competitions = [];
     //   this.getAllCompetitions();
     // });
+  }
+  searchTasks(dataForm: any) {
+    this.store.dispatch(new SearchTasksAction(dataForm.keyword));
   }
 }
