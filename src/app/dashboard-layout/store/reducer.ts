@@ -19,7 +19,7 @@ const initialState: TaskStateInterface = {
     errorMessage: '',
     dataSate: TaskStateEnum.INTILALE
 }
-export function tasksReducer(state: TaskStateInterface = initialState, action: Ac   tion){
+export function tasksReducer(state: TaskStateInterface = initialState, action: Action){
     switch(action.type){
         // get all tasks
         case '[Task] Get All Tasks':

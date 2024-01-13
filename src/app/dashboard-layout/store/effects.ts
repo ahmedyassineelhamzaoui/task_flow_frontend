@@ -11,6 +11,7 @@ export class TasksEffects{
         private taskService:TaskService
     ){}
 
+    // get all tasks effect
     getAllTasksEffect=createEffect(()=>this.actions$.pipe(
         ofType('[Task] Get All Tasks'),
         mergeMap((action)=>this.taskService.getAllTasks().pipe(
@@ -24,5 +25,19 @@ export class TasksEffects{
             
         ))
     ))
+    // search tasks effect
+    searchTasksEffect=createEffect(()=>this.actions$.pipe(
+        ofType('[Task] Search Tasks'),
+        mergeMap((action)=>this.taskService.searchTasks(action).pipe(
+            map((response)=>{
+                return {type:'[Task] Search Tasks success',payload:response.details.tasks}
+            }),
+            catchError((error)=>{
+                return of({type:'[Task] Search Tasks failure',payload:error})
+            })
+            
+        ))
+    ))
+
    
 }
