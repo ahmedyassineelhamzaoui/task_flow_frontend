@@ -37,6 +37,6 @@ export class TaskComponent implements OnInit {
     // });
   }
   searchTasks(dataForm: any) {
-    this.store.dispatch(new SearchTasksAction(dataForm.keyword));
+    this.store.dispatch(new SearchTasksAction(dataForm.search));
   }
 }
