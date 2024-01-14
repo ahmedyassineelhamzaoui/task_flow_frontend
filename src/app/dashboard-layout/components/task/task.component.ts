@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
 import { TaskStateEnum, TaskStateInterface } from '../../store/reducer';
-import { GetAllTasksAction, SearchTasksAction } from '../../store/action';
+import { FilterTasksAction, GetAllTasksAction, SearchTasksAction } from '../../store/action';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTaskComponent } from '../add-task/add-task.component';
 
@@ -45,5 +45,6 @@ export class TaskComponent implements OnInit {
   filterTasks(e: Event) {
     const target = e.target as HTMLSelectElement; 
     console.log('Filtering tasks with status:', target.value);
+    this.store.dispatch(new FilterTasksAction(target.value));
   }
 }
