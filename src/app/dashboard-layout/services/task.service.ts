@@ -25,5 +25,10 @@ export class TaskService {
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
       return this.http.get<any>(environment.apiURL + 'searchedTasks?searchName=' + search, { headers });
     }
+    filterTasks(status: string): Observable<ResponseWithDetailsInterface> {
+      const token = this.persistanceService.get('accessToken');
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      return this.http.get<any>(environment.apiURL + 'filteredTasks?status=' + status, { headers });
+    }
   
 }
