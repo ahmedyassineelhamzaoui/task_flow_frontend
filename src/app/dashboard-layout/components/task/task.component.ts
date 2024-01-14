@@ -44,7 +44,9 @@ export class TaskComponent implements OnInit {
   }
   filterTasks(e: Event) {
     const target = e.target as HTMLSelectElement; 
-    console.log('Filtering tasks with status:', target.value);
-    this.store.dispatch(new FilterTasksAction(target.value));
+    const validStatuses = ['TODO', 'IN_PROGRESS', 'COMPLETED', 'NOT_DONE'];
+      if (validStatuses.includes(target.value)) {
+        this.store.dispatch(new FilterTasksAction(target.value));
+      } 
   }
 }
